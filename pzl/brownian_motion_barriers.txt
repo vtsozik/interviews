@@ -1,0 +1,75 @@
+Q: There's drift less Brownian motion z(t)=m*dt+s*dw, where m=0, z(0)=0.
+There are two barriers, a=1, b=-2. What is the probability that barrier b will
+be hit first.
+
+A1.1: (Adapted from gambler's ruin problem in Michael Steele book on
+stochastic calculus.)
+Let's employ function f(x) to linearly transform coordinate system
+bounded by -B<=x<=A condition into the system which have the following boundaries:
+1) f(-B)=B+(-B)=0, 2) f(A)=B+A=1. To better understand the necessity of
+this transformation we can rewrite these boundaries as probabilities of
+gambler to reach target wealth A from the starting point where gambler initial
+wealth is lost (i.e. gambler current wealth is -B) P(B+A|0)=0 or from the starting
+point where gambler's wealth has already reached target wealth A, so
+P(B+A|B+A)=1. Now let's write a recurrence relation equation which equates probability of
+reaching target wealth A having initial wealth x with sum of weighted outcomes in
+the next step, where gambler may win with probability c or lose with probability
+(1-c) 1 unit of wealth: P(B+A|x)=c*P(B+A|x+1)+(1-c)*P(B+A|x-1). This
+recurrence relation equation has the following characteristic equation: x=c*(x^2)+(1-c).
+This transforms to x^2+1/c*x+(1-c)/c=0, solving this quadratic equation gives two roots:
+x1=1, x2=(1-c)/c=r. In general case linearly independent solution will be in a
+form of: P(B+A|x)=D1*(1^x)+D2*(r^x), where D1 and D2 are constants. if x=f(-B)=0,
+then P(B+A|0)=0=D1+D2. if x=f(A)=1, then P(B+A|B+A)=1=D1+D2*(r^(B+A)). So
+D1=1/(1-(r^(B+A))), D2=-1/(1-(r^(B+A))) and hence 
+P(B+A|x)=1/(1-(r^(B+A)))*(1^x)-1/(1-(r^(B+A)))*(r^x)=(1-(r^x))/(1-(r^(B+A))). 
+But this solution is bound to the linear independence condition, i.e. x1!=x2 or r!=1. 
+Random walk or discrete Brownian motion violates this condition. 
+Indeed it's easy to see that r=1 if c=1/2. To ensure linear independence
+of particular solutions we will look for general solution in a form of
+P(B+A|x)=(D1+D2*x)*(1^x)=D1+D2*x.  Again if x=f(-B)=0 then P(B+A|0)=0=D1+D2*0, 
+so D1=0. if x=f(A)=1, then P(B+A|B+A)=1=D1+D2*(B+A) , so D2=(1-D1)/(B+A)=1/(B+A). 
+Therefore P(B+A|x)=x/(B+A) and if x=B then P(B+A|B)=B/(B+A).
+
+A1.2: (This approach gives the correct solution but lacks mathematical
+rigor.)
+Suppose the probability of hitting a first is equal to pa. Probability
+of hitting b first is equal to pb. Then pa+pb=1. Brownian motion is
+martingale and hence at any given moment t we have E[z(t)]=z(0)=0. On the other
+hand E[z(t)]=a*pa+b*pb=0. Hence we have a system of linear equations, solving
+it we have pb=abs(a)/(abs(a)+abs(b))=1/(1+2)=1/3. Below are Monte Carlo
+simulation results that prove derived above formula for barriers that have the same
+ratio abs(b/a)=2 but with much larger absolute values:
+
+a = -1, b =  2: pb = 0.38061  pa = 0.61939  t(b) = 5.19779 t(a) = 3.82934 E[t] = 4.35019
+a = -2, b =  4: pb = 0.360796 pa = 0.639204 t(b) = 15.1586 t(a) = 10.343  E[t] = 12.0805
+a = -5, b =  10: pb = 0.345837 pa = 0.654163 t(b) = 76.3778 t(a) = 49.6569 E[t] = 58.898
+a = -10, b = 20: pb = 0.340399 pa = 0.659601 t(b) = 284.581 t(a) = 181.431 E[t] = 216.543
+a = -20, b = 40: pb = 0.336249 pa = 0.663751 t(b) = 1104.67 t(a) = 693.846 E[t] = 831.985
+a = -40, b = 80: pb = 0.334288 pa = 0.665712 t(b) = 4341.65 t(a) = 2721.9  E[t] = 3263.36
+
+A1.3: (This approach may look correct at first, but following it you end up
+with solution that close to the right one, but has different functional
+form. The difference is due to the fact that below we multiply probabilities
+of events that are not independent, hence the functional difference is the
+correlation between these events.)
+Here we have probability density function ROb(t) which is probability
+density of crossing barrier b in time period from t to t+dt, where dt->0. So the
+probability of crossing barrier b from t to t+dt is equal to ROb(t)*dt. On the other
+hand the cumulative probability of not crossing barrier a until time t is equal to
+1-INT[0,t](ROa(s)*ds). Then the probability of crossing barrier b in time period from t to t+dt
+without crossing barrier a prior to time t is equal to ROb(t)*(1-INT[0,t](ROa(s)*ds))*dt.
+Finally integrating this from 0 to +inf we have:
+INT[0,+inf](ROb(t)*(1-INT[0,t](ROa(s)*ds))*dt)=
+=INT[0,+inf](ROb(t)*dt)-INT[0,+inf](ROb(t)*INT[0,t](ROa(s)*ds)*dt)=
+=1-INT[0,+inf](ROb(t)*INT[0,t](ROa(s)*ds)*dt), where INT[0,+inf](ROb(t)*dt)=1 since
+we cross barrier b with probability 1 in infinite time period.
+Simplifying this further we have: 1-INT[0,+inf](ROb(t)*INT[0,t](ROa(s)*ds)*dt)=1-
+-INT[0,+inf](ROb(t)*(1-INT[t,+inf](ROa(s)*ds))*dt)=1-1+INT[0,+inf](ROb(t)*
+*INT[t,+inf](ROa(s)*ds)*dt)=INT[0,+inf](ROb(t)*INT[t,+inf](ROa(s)*ds)*dt
+), where
+ROa(t)=a/(2*Pi*t^3)^(1/2)*exp(-(a^2)/2/t), ROb(t)=b/(2*Pi*t^3)^(1/2)*exp(-(b^2)/2/t)
+So INT[0,+inf](ROb(t)*INT[t,+inf](ROa(s)*ds)*dt)=
+=INT[0,+inf](b/(2*Pi*t^3)^(1/2)*exp(-(b^2)/2/t)*
+*INT[t,+inf](a/(2*Pi*s^3)^(1/2)*exp(-(a^2)/2/s)*ds)*dt)= 
+=1/2/Pi*INT[0,+inf](exp(-(x^2)/2)*INT[0,a/b*x](exp(-(y^2)/2)*dy)*dx)= 
+=1/2/Pi*arctan(a/b)

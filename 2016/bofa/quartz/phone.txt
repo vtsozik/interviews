@@ -1,0 +1,2 @@
+Q: Represent data structure that holds 13x4 cards and describe how quickly to identify sequence of 5 cards without gaps or flush 4 out of 5 cards are of the same rank.
+A: Use a structure that has 4 shorts (16 bit each). Record cards as bits. Oring will reveal whether they are consecutive? For full answer look at multiplying by 31 and intel instruction that gives a position of the lowest set bit.

@@ -1,0 +1,19 @@
+a) How you design, develop, and debug your code.
+
+1) Design: determine and pick algorithm(s)/datastructure(s) with minimum execution and space complexity.
+2) Implementation: quickly code working prototype that may not be efficient as original design but works and takes care of all edge cases that came to mind during the implementation.
+Code test cases as well,  so they will not be forgotten at later stages/phases of development.
+3) Debug: While crashes or race conditions are easier to investigate in debugger I always like to add debug print outs enabled/disabled by preprocessor macros. I like to use logger facilities if available to make my life easier (timestamping, label formatting, log roll, async i/o). Looking at data in logs helps to pin point at edge cases that weren't initially identified.
+4) Refactor resulted code to achieve minimum target complexity established during design phase. Often edge cases make this part very hard. Refactoring is multi-pass process. During the refactoring I try to reduce number of variables, replace as much of my code as possible with stl/boost code. This reduces number of lines and possible bugs in them, but sometimes hurts readbility of the code.
+
+b) How you detect memory leak or excessive memory usage.
+
+It's always great to run valgrind on regression unit tests or final version of the binary. If the problem slipped into production there are logging tools such as sar that helps you to identify time range when memory usage grew most steeply. You Collating sar log with application log by timestamp it's relatively easy to determine which component/event lead to excessive memory consumption and identify code areas that may need to be improved. If I can access /proc/$pid/statm for the process and recreate the condition I can get additional information about VM distribtion (i.e. RSS, SWAP) that helps to identify whether memory excess is actively accessed (most of it be in RSS) or not (SWAPped out to disk) or both segments are large during prolong and continues waste.
+
+c) Give a few examples of how you refactor existing code: what were the issues and how you did it.
+
+We used large pinned memory pages to minimize TLB miss ratio and our own memory allocation routine. b+tree nodes were allocated in-place using this memory. I added std allocator override to be able to store varios helper objects in that memory using stl containers mapped to memory allocated from pinned pool. Another successful refactoring was to speed-up replication by replacing synchronous feed with REQ, ACQ, REQ, ACQ request-reply streams with async pipelining, REQ1, REQ2, ..., REQn ->  ACK1, NACK2, ..., ACQn where ACQ or NACQ was matched to the corresponding REQ by numerical tag.
+
+d) Tell us about your experience in parallel computing and distributed service architecture.
+
+I enhanced and maintained HUGS (highly utilized grid system) - BOFA in-house developed grid scheduler. Combined, multiple schedulers managed 100K cores accross several datacenters. On top of them we implemented distributor. Distributor ran partitioning schedule with hard, soft and burst capacities to migrate workers from one scheduler to another at different times or based on system demand. Long ago I was also involved in Bloomberg CUDA project to reduce number of hosts from unfeasible rquirement of 8000 per grid just down to 50.

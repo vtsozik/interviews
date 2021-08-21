@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for n in {1..3} ; do
+    cat pathstogoal.in.tc$n | ./pathstogoal > pathstogoal.out$n
+    diff pathstogoal.out.tc$n pathstogoal.out$n
+    echo -n "Test# $n"
+    if [ "$?" -eq "0" ]; then
+        echo " - Passed!"
+	rm pathstogoal.out$n
+    else
+        echo " - Failed!"
+    fi
+done

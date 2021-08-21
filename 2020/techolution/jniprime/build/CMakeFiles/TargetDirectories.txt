@@ -1,0 +1,3 @@
+/home/vtsozik/work/interviews/2020/techolution/jniprime/build/CMakeFiles/rebuild_cache.dir
+/home/vtsozik/work/interviews/2020/techolution/jniprime/build/CMakeFiles/com_techolution_jni.dir
+/home/vtsozik/work/interviews/2020/techolution/jniprime/build/CMakeFiles/edit_cache.dir

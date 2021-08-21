@@ -1,0 +1,131 @@
+Question: You are given a very large integer number n. Find the fastest algorithm that
+
+will find all Hardy-Ramanujan numbers or double taxicab numbers 
+
+("http://en.wikipedia.org/wiki/1729_(number)" -> numbers that can be exressed as a sum 
+
+of 2 positive cubes in 2 distinct ways) in a range from 0 to n. What will be complexity
+
+of this algorithm.
+
+ 
+
+Approaches:
+
+1) First approach has linear ~O(n) complexity, 
+
+where n - is the largest number to check. It's very easy to implement and it requires
+
+only 3 nested loops, where each loop has time complexity ~O(n^(1/3)), so resulted
+
+time complexity will be equal to O(n^(1/3) * n^(1/3) * n^(1/3)) = O(n^(1/3 + 1/3 + 1/3))
+
+=O(n). Algorithm is based on the following idea:
+
+Since both a^3 + b^3 = m and c^3 + d^3 = m, then
+
+d^3=a^3 + b^3 - c^3. Now since m <= n, then
+
+a < n^(1/3), b < n^(1/3), c < n^(1/3) and d < n^(1/3)
+
+Iterating 3 nested loops for unique a, b, c values (uniqueness simply achieved by offsetting b 
+
+from a and c from b by 1) up to approximate cube root limits (I roughly estimated that 
+
+b should iterate up to upper limit ul=(n-1)^(1/3)-1, a up to lower limit ll=((n-ll)/2-1)^(1/3)-1 and 
+
+c up to ll+1) would yield list of numbers that can be represented by two unique cubic sums. 
+
+To prove the concept I wrote simple cpp program and tested it against against several ranges. 
+
+Please see code below for more details:
+
+ 
+
+#include <stdlib.h>
+
+#include <math.h>
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+
+ if(argc != 2) {
+
+  cerr << "Usage: " << argv[0] << "<Largest number to check>" << endl;
+
+ }
+
+ int n = atoi(argv[1]),
+
+  ul = pow(n - 1, 1./3.),
+
+  ll = pow((n - ul) / 2 - 1, 1./3.);
+
+ for(int i = 1; i < ll; ++i) {
+
+  for(int j = i + 1; j <= ll; ++j) {
+
+   for(int k = j + 1; k < ul; ++k) {
+
+    int cs = j * j * j + k * k * k,
+
+     ic = i * i * i,
+
+     csmic = cs - ic,
+
+     r = rint(pow(csmic, 1./3.));
+
+    if(cs <= n && r * r * r == csmic) {
+
+     cout << "Found: i = " << i << " r = " << r
+
+      << " j = " << j << " k = " << k
+
+      << " j^3 + k^3 = " << cs << endl;
+
+    }
+
+   }
+
+  }
+
+ }
+
+ return 0;
+
+}
+
+ 
+
+Second approach is more analytically involved and I believe that it may have approximate logarithmic 
+
+complexity. :
+
+
+
+x^3 + y^3 = (x + y)*(x^2 - x*y + y^2) = A*B = m, where
+
+x + y = A and (x^2 - x*y + y^2) = B, so if y = A - x, then
+
+x^2 - x*(A - x) + (A - x)^2 = B => x^2 - x*A + x^2 + A^2 + -2*A*x + x^2 = B
+
+=> 3*x^2 - 3*x*A + A^2 - B = 0, so x = (3*A +|- (9*A^2 - 4*3*(A^2 - B))^.5) / (2 * 3) =
+
+= (3*A +|- (9*A^2 - 12*A^2 + 12*B)^.5) / 6 = (3*A +|- (12*B - 3*A^2)^.5) / 6
+
+ 
+
+For the second pair of numbers we can write the same set of equations, replacing A and B
+
+with C and D, so m = C*D and x and y with, say, p and q. To complete the algorithm, we 
+
+need to factor each m (where m <= n) to find 4 unique integer factors A, B, C and D 
+
+to represent m as m = A*B = C*D. I believe that instead of looking for possible factor combinations 
+
+for each m, we can efficiently iterate factors themselves and print the list of qualifying 
+
+numbers (as in the first approach).

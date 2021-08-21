@@ -1,0 +1,87 @@
+1h 30m left
+ALL
+1
+2
+2. Traverse directed graph
+Having a Directed Graph, with nodes represented by integers, and edges by a collection of node pairs.
+
+ 
+
+Implement a function traverse(starting_node, graph) that, given a starting_node and a graph, returns an array containing all descendant nodes of starting_node.
+
+ 
+
+For example, having this graph:
+
+ 
+
+ 
+
+
+
+graph = [[1, 2], [1, 3], [3, 4]]
+
+ 
+
+If traverse(1, graph) it's called, it will return an array with all green nodes in order [2, 3, 4]:
+
+ 
+
+
+
+ 
+
+If traverse(3, graph) it's called, it will return an array with only one node [4]:
+
+ 
+
+
+
+ 
+
+Important Notes:
+
+* The order of nodes in the returned array matters, right before returning the resulting array, sort it from least to greatest.
+
+* The graph may have cycles (i.e.: it's possible for node 4 to point to node 1).
+
+* All nodes have a unique integer number, and starting_node is never part of the resulting array.
+
+* The case when there are no descendants for a given starting_node is not required to be handled.
+
+* graph is a two dimensional array, where each row represents an edge, and each edge has two elements, source and target (i.e.: graph = [[1, 2]]; is a graph with only one edge 1 -> 2 ).
+
+C++
+Autocomplete Ready
+
+
+
+
+1101112131415161718192021222324
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+
+
+/*
+ * Complete the 'traverse' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER starting_node
+ *  2. 2D_INTEGER_ARRAY graph
+ */
+
+Line: 10 Col: 1
+Test Results
+Custom Input
+
+Run
+
+
+Submit Code

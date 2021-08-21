@@ -1,0 +1,86 @@
+i1h 31m left
+ALL
+1
+2
+1. Fibonacci
+The Fibonacci numbers are a sequence of numbers where each number after the first two is a sum of the prior two. As an illustration, here is a short sequence given starting values of (0, 1): Fibonacci series =  (0, 1, 1, 2, 3, 5, 8, 13).
+
+ 
+
+Given an integer n, calculate the first n numbers in the Fibonacci sequence given starting elements of (0, 1). Return an array of n integers, including the given (0, 1) in the sequence.
+
+ 
+
+Function Description 
+
+Complete the function fibonacci in the editor below.
+
+ 
+
+fibonacci has the following parameter(s):
+
+    int n:  the length of the Fibonacci series to return
+
+Return:
+
+    int[n]: an array of n Fibonacci numbers starting with (0, 1)
+
+ 
+
+Constraints
+
+1 ≤ n ≤ 10
+ 
+
+Input Format for Custom Testing
+Input from stdin will be processed as follows and passed to the function.
+
+ 
+
+The only line contains an integer, n
+
+Sample Case 0
+Sample Input 0
+
+STDIN    Function
+-----    --------
+4    →   n = 4
+Sample Output 0
+
+0
+1
+1
+2
+C++
+Autocomplete Ready
+
+
+
+
+19101112131415161718192021
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+
+
+/*
+ * Complete the 'fibonacci' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER n as parameter.
+ */
+
+vector<int> fibonacci(int n) {
+
+Line: 9 Col: 1
+Test Results
+Custom Input
+
+Run
+
+
+Submit Code

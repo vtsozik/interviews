@@ -1,0 +1,72 @@
+README for the Interviewee
+
+1. HOW TO USE THIS PACKAGE
+
+This directory is setup with tools to build and run the problem code against already prepared test cases.
+You have 4 problems to solve:
+problem1.cpp
+problem2.cpp
+problem3.cpp
+problem4.cpp
+
+To build and run code against tests for a specific problem, use the command:
+./run.sh 1  # runs problem1.cpp
+./run.sh 2  # runs problem2.cpp
+./run.sh 3  # runs problem3.cpp
+./run.sh 4  # runs problem4.cpp
+
+To build and run code for all problems against their test cases, use the command:
+./run_all.sh
+
+2. C++ VERSION TO USE
+
+Note that the makefile assumes your compiler can use the option '-std=c++14':
+If you don't have this option available, you will need to upgrade your compiler
+to a sufficiently modern version, or downgrade the C++ version to '-std=c++11', etc.
+in the makefile. We would much prefer use of c++14.
+
+3. TIMING THE TEST
+
+Please time your test. We rely on an honor code system for you to report the time you took to solve
+all the problems. You should complete the test in 2 hours or less.
+
+4. REPORTING YOUR SOLUTIONS
+
+To report your solutions, you may:
+1. Email us back only the .cpp files, or
+2. Create a tarball and email that back. If you do create a tarball,
+   be sure to run make clean to remove the binaries you built before creating it.
+
+The email address to send your results to is:
+btownes@veritionfund.com
+
+5. LOCATION OF TEST CASE INPUT DATASETS AND SOLUTIONS
+
+Input files for test cases for problems are located in the datasets directory:
+
+datasets/problem1:
+input1  input2  input3  input4  input5  input6  input7  input8
+datasets/problem2:
+input1  input2  input3  input4  input5  input6
+datasets/problem3:
+input1  input2  input3  input4
+datasets/problem4:
+input1  input2  input3  input4  input5
+
+Output files for solutions to the test cases are located in the solutions directory:
+
+solutions/problem1:
+output1  output2  output3  output4  output5  output6  output7  output8
+solutions/problem2:
+output1  output2  output3  output4  output5  output6
+solutions/problem3:
+output1  output2  output3  output4
+solutions/problem4:
+output1  output2  output3  output4  output5
+
+For each problem input file, there is a corresponding solution output file.
+
+CAVEAT EMPTOR:
+Please note that the inputs provided for each problem are NOT guaranteed to
+constitute an exhaustive set of test cases for the problem, and passing all
+test cases may NOT necessarily mean your solution is correct.

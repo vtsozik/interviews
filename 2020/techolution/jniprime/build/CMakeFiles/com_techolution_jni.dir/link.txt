@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++ -fPIC  -std=c++11 -O2 -DNDEBUG  -shared -Wl,-soname,libcom_techolution_jni.so -o libcom_techolution_jni.so CMakeFiles/com_techolution_jni.dir/com/com_techolution.cpp.o 

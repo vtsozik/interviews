@@ -1,0 +1,144 @@
+29m left
+ALL
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+11. Paths to a Goal
+Given a number line from 0 to n and a string denoting a sequence of moves, determine the number of subsequences of those moves that lead from a given point x to end at another point y. Moves will be given as a sequence of l and r instructions. An instruction l = left movement, so from position j the new position is j - 1, and an instruction r = right movement, so from position j the new position would be j + 1.
+
+For example, given a number line from 0 to 6, and a sequence of moves rrlrlr, the number of subsequences that lead from 1 to 4 on the number line is 3, as shown below.
+
+ 
+
+
+
+Note: Subsequences are created by deleting 0 or more elements from a sequence without changing the order. Return the answer modulo (109+7).
+
+ 
+
+Function Description 
+
+ 
+
+Complete the function distinctMoves in the editor below. The function must return an integer that represents the number of distinct subsequences. As this number may be large, return the value modulo (109+7).
+
+ 
+
+distinctMoves has the following parameter(s):
+
+    s:  a string that represents a sequence of moves
+
+    n:  an integer that represents the upper bound of the number line
+
+    x:  an integer that represents the starting point
+
+    y:  an integer that represents the ending point
+
+ 
+
+Constraints
+
+1 ≤ |s| ≤ 103
+0 ≤ x, y < n ≤ 2500
+ 
+
+Input Format For Custom Testing
+Input from stdin will be processed as follows and passed to the function.
+
+The first line consists of a string, s.
+
+The second line consists of an integer, n.
+
+The third line consists of an integer, x.
+
+The fourth line consists of an integer y.
+
+Sample Case 0
+Sample Input For Custom Testing
+
+rrlrlr
+6
+1
+2
+Sample Output 0
+
+7
+Explanation 0
+
+The seven possible distinct subsequence of s = "rrlrlr" are:
+
+s1 = "r", the move sequence is 1 → 2
+s2 = "rrl", the move sequence is 1 → 2 → 3 → 2
+s3 = "rlr", the move sequence is 1 → 2 → 1 → 2
+s4 = "lrr", the move sequence is 1 → 0 → 1 → 2
+s5 = "rrlrl", the move sequence is 1 → 2 → 3 → 2 → 3 → 2
+s6 = "rlrlr", the move sequence is 1 → 2 → 1 → 2 → 1 → 2
+s7 = "rrllr", the move sequence is 1 → 2 → 3 → 2 → 1 → 2
+Sample Case 1
+Sample Input For Custom Testing
+
+rrlrlr
+6
+1
+3
+Sample Output 1
+
+5
+Explanation 1
+
+The five distinct possible subsequences of s = "rrlrlr" are:
+
+s1 = "rr", the move sequence is 1 → 2 → 3
+s2 = "rrlr", the move sequence is 1 → 2 → 3 → 2 → 3
+s3 = "rlrr", the move sequence is 1 → 2 → 1 → 2 → 3
+s4 = "rrrl", the move sequence is 1 → 2 → 3 → 4 → 3
+s5 = "rrlrlr", the move sequence is 1 → 2 → 3 → 2 → 3 → 2 → 3
+Sample Case 2
+Sample Input For Custom Testing
+
+rrrlrr
+7
+0
+0
+Sample Output 2
+
+2
+Explanation 2
+
+The two distinct possible subsequences of s = "rrrlrr" are:
+
+s1 = "" (Empty Subsequence)
+s2 = "rl", the move sequence is 0 → 1 → 0
+C++
+Autocomplete Ready
+
+
+
+
+1910111213141516171819202122232425
+ *  4. INTEGER y
+ */
+
+int distinctMoves(string s, int n, int x, int y) {
+
+}
+
+int main()
+Line: 22 Col: 1
+Test Results
+Custom Input
+
+Run
+
+
+Submit Code
+m

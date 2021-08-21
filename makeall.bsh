@@ -1,0 +1,14 @@
+#/bin/bash
+
+cwd=$PWD
+for fn in `find . -iname Makefile`
+do 
+	dr=`dirname $fn`
+        if [ "$dr" != "." ]
+	then  
+		echo "Going into $dr"
+        	cd $dr
+                make $1
+		cd $cwd
+        fi
+done

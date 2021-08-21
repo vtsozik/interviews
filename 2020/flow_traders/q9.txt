@@ -1,0 +1,29 @@
+9. C++11 Multiple choice question
+According to the C++11 standard what is the output of this program 
+
+
+template <template <typename> class>
+struct X {
+  X() { std::cout << "1"; }
+};
+
+template <typename>
+struct Y {};
+
+template <typename T>
+using Z = Y<T>;
+
+template <>
+struct X<Y> {
+  X() { std::cout << "2"; }
+};
+
+int main() {
+  X<Y> x1;
+  X<Z> x2;
+}
+Pick ONE option
+￼11
+￼22
+￼21
+￼12

@@ -1,0 +1,7 @@
+Q: You have many ropes with different chemical properties, but 
+if you ignite any of these ropes it will burn out exactly in 1 hour.
+How to measure 45 minutes by burning these ropes. Notice that burning
+speed is not linear.
+
+A: Ignite one rope on both ends and another on one end. When first
+rope burns out ignite second rope on the other end.

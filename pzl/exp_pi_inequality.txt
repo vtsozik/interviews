@@ -1,0 +1,13 @@
+Q: What is greater e^pi or pi^e.
+A: We have the following inequality: e^pi!=pi^e or e^(1/e)!=pi^(1/pi).
+Let's now analyze f(x)=x^(1/x) function behavior try to find its extremum. For
+that we need to find function derivative:
+df(x)/dx=(1/x^2)*x^(1/x)-(1/x^2)*ln(x)=(1/x^2)*(x^(1/x)-ln(x)). Solving:
+df(x)/dx=0 equation we have x^(1/x)=ln(x) => ln(x)^x=x => x*ln(x)=x => ln(x)=1
+=> x=e. Now let's determine if found extreme point is function maxima or
+minima. We choose second point to be equal to 1 for simplicty of calculations
+and then compute we compute loosely defined second derivative:
+(df(e)-df(1))/(e-1)=((e^(1/e)-ln(e))/(e^2)-(1^(1/1)-ln(1))/(1^2))/(e-1)=
+(e^((1/e)-2)-(1/e^2)-1)/(e-1)<0. Since expression above gives negative result
+found extreme point is maxima: f(e)=maximai. Finally returning to our
+inequality we have e^(1/e)>pi^(1/pi) and e^pi>pi^e. 

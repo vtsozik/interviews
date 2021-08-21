@@ -1,0 +1,9 @@
+Recruiters:
+1) Thomas Cirri
+2) Irene Padkowsky
+
+Managers and Developers
+1) Andreas Nilsson - Manager for security group - owe him iterative versus recursive algorithm with timing benchmark.
+2) Hearth - owe him shared lock.
+3) Dan Pasette - manager of server group (really nice guy).
+4) Spencer Jackson - young security researcher.

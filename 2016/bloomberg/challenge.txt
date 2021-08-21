@@ -1,0 +1,140 @@
+Introduction
+
+ 
+
+In this exercise we will implement  Foreign Exchange market software. 
+
+The rates (also called FX Rates) at which currency pairs like EURUSD/JPYUSD/GBPUSD are exchanged  are contributed by many market makers (usually large banks). Those contributors publish in real-time the rate at which they are willing to buy or sell a given currency pair. Every new quote from a given contributor and for a given currency pair will invalidate the previous one that contributor published for that currency pair.
+Traders continuously monitor those rates and rely on software to analyze in real-time the best offers currently available.
+
+In order to simplify the scope, we will assume that all quotes coming from the various banks are already aggregated in a single stream, with each quote having the following format.
+
+ 
+
+TimestampId|Currency Pair|Bank|Buy Rate| Sell Rate
+
+ 
+
+Where:
+
+    Timestamp ID: an integer representing a unique Timestamp for each quote
+    Currency Pair:  a string which represents the currency code (i.e. “EURUSD”, “EURGBP”, “CHFUSD”..)
+    Bank: a string which uniquely identifies the contributor
+    Buy Value: a floating point number which indicates the rate at which the Bank is willing to buy the given currency pair
+    Sell Value: a floating point number which indicates the rate at which the Bank is willing to sell the given currency pair
+
+ 
+Exercise Description
+
+ 
+
+The goal of the exercise is  to implement a program which takes a stream of quotes and returns the best  buy and the best sell offer for a given currency (EURUSD) upon each new quote.
+
+The best buy is the contributor offering the largest buy value while the best sell is the contributor offering the lowest sell value.
+
+The stream of quotes will be available on the standard input in the format mentioned above with each quote on a new line.
+
+ 
+
+Here are a few test cases:
+
+ 
+Test Case (STDIN) 	Program Output (STDOUT) 	Explanation
+
+1|EURUSD|Bank1|1.1|1.2
+	
+
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+	
+
+Single contributor is always the best
+
+1|EURUSD|Bank1|1.1|1.2
+2|EURUSD|Bank2|1.1|1.15
+	
+
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.15 from Bank2
+	
+
+Bank2  provides a better Sell (cheaper). By default when 2 banks quote the same value we should keep the oldest one
+
+1|EURUSD|Bank1|1.1|1.2
+2|EURUSD|Bank2|1.1|1.15
+3|EURUSD|Bank3|1.15|1.2
+	
+
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.15 from Bank2
+Best EURUSD Buy = 1.15 from Bank3
+Best EURUSD Sell = 1.15 from Bank2
+
+ 
+	
+
+Bank3 has the best Buy value (more expensive)
+
+1|EURUSD|Bank1|1.1|1.2
+2|EURUSD|Bank1|1.0|1.3
+	
+
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1 from Bank1
+Best EURUSD Sell = 1.3 from Bank1
+
+ 
+	
+
+Only the latest quote from a bank should be taken into account. Any new quote from a bank invalidates all the previous ones.
+
+1|EURUSD|Bank1|1.1|1.2
+2|EURUSD|Bank2|1.05|1.25
+3|EURUSD|Bank1|1.0|1.3
+	
+
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1.05 from Bank2
+Best EURUSD Sell = 1.25 from Bank2
+	
+
+More complex case from the previous example in which now the best quote is from Bank2.
+
+Dimension of the problem
+
+ 
+
+Because you might have to make some trade-off in the design of your algorithm or your  choice of data structure, here are some statistics which might help:
+
+    The number of banks is bounded and constant. It’s in the order or 200
+    The number and rate of incoming  quote is unbounded. Several 100s of millions can be expected during the day.
+    The number of currency pairs is also bounded. It’s in the order of 200 as well
+
+ 
+How your code will be evaluated?
+
+ 
+
+    Is the output correct?
+    Is the code extensible?
+        It should be easy to modify the code to incorporate new requirement. 
+        Are your software components (class, functions) re-usable 
+    Is the code efficient?
+        How are the dimensions of the problem affect your design
+    Is the code easy to read?
+        Is the code well separated
+        Do you follow consistent conventions
+        Do you identify key complex part of your program which should require some comments 
+        Do you pay attention to names and attempt to make the code `self-documented`
+
+
+Regarding performance: do the best you can in the time provided.   At the end, if you have ideas about how to improve performance further, document those in a comment at the top of your submission. The more details the better. 
+

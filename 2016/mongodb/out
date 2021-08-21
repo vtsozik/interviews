@@ -1,0 +1,290 @@
+Writer's tid: 140184479188736 is about to block
+Writer's tid: 140184395257600 is about to block
+Writer's tid: 140184311330560 is about to block
+Writer's tid: 140184227403520 is about to block
+Writer's tid: 140184143476480 is about to block
+Writer's tid: 140184059549440 is about to block
+Writer's tid: 140183975622400 is about to block
+Writer's tid: 140183891695360 is about to block
+Writer's tid: 140183807768320 is about to block
+Writer's tid: 140183723841280 is about to block
+Thread: 0 (tid: 140184479188736) is about to be unblocked
+TID: 140184479188736 is about to broadcast
+Reader's tid: 140184470796032 is now unblocked
+Thread: 1 (tid: 140184470796032) is about to be unblocked
+TID: 140184470796032 is about to broadcast
+Thread: 10 (tid: 140184395257600) is about to be unblocked
+TID: 140184395257600 is about to broadcast
+Thread: 20 (tid: 140184311330560) is about to be unblocked
+TID: 140184311330560 is about to broadcast
+Thread: 30 (tid: 140184227403520) is about to be unblocked
+TID: 140184227403520 is about to broadcast
+Reader's tid: 140184445617920 is now unblocked
+Thread: 4 (tid: 140184445617920) is about to be unblocked
+TID: 140184445617920 is about to broadcast
+Reader's tid: 140184420435712 is now unblocked
+Thread: 7 (tid: 140184420435712) is about to be unblocked
+TID: 140184420435712 is about to broadcast
+Reader's tid: 140184437225216 is now unblocked
+Thread: 5 (tid: 140184437225216) is about to be unblocked
+TID: 140184437225216 is about to broadcast
+Reader's tid: 140184353294080 is now unblocked
+Thread: 15 (tid: 140184353294080) is about to be unblocked
+TID: 140184353294080 is about to broadcast
+Reader's tid: 140184370079488 is now unblocked
+Thread: 13 (tid: 140184370079488) is about to be unblocked
+TID: 140184370079488 is about to broadcast
+Reader's tid: 140184336508672 is now unblocked
+Thread: 17 (tid: 140184336508672) is about to be unblocked
+TID: 140184336508672 is about to broadcast
+Reader's tid: 140184328115968 is now unblocked
+Thread: 18 (tid: 140184328115968) is about to be unblocked
+TID: 140184328115968 is about to broadcast
+Reader's tid: 140184302937856 is now unblocked
+Thread: 21 (tid: 140184302937856) is about to be unblocked
+TID: 140184302937856 is about to broadcast
+Thread: 50 (tid: 140184059549440) is about to be unblocked
+TID: 140184059549440 is about to broadcast
+Reader's tid: 140184252581632 is now unblocked
+Thread: 27 (tid: 140184252581632) is about to be unblocked
+TID: 140184252581632 is about to broadcast
+Thread: 60 (tid: 140183975622400) is about to be unblocked
+TID: 140183975622400 is about to broadcast
+Reader's tid: 140184244188928 is now unblocked
+Thread: 28 (tid: 140184244188928) is about to be unblocked
+TID: 140184244188928 is about to broadcast
+Reader's tid: 140184260974336 is now unblocked
+Thread: 26 (tid: 140184260974336) is about to be unblocked
+TID: 140184260974336 is about to broadcast
+Thread: 80 (tid: 140183807768320) is about to be unblocked
+TID: 140183807768320 is about to broadcast
+Reader's tid: 140184219010816 is now unblocked
+Thread: 31 (tid: 140184219010816) is about to be unblocked
+TID: 140184219010816 is about to broadcast
+Thread: 90 (tid: 140183723841280) is about to be unblocked
+TID: 140183723841280 is about to broadcast
+Reader's tid: 140184210618112 is now unblocked
+Thread: 32 (tid: 140184210618112) is about to be unblocked
+TID: 140184210618112 is about to broadcast
+Reader's tid: 140184185440000 is now unblocked
+Thread: 35 (tid: 140184185440000) is about to be unblocked
+TID: 140184185440000 is about to broadcast
+Thread: 70 (tid: 140183891695360) is about to be unblocked
+TID: 140183891695360 is about to broadcast
+Reader's tid: 140184177047296 is now unblocked
+Thread: 36 (tid: 140184177047296) is about to be unblocked
+TID: 140184177047296 is about to broadcast
+Thread: 40 (tid: 140184143476480) is about to be unblocked
+TID: 140184143476480 is about to broadcast
+Reader's tid: 140184135083776 is now unblocked
+Thread: 41 (tid: 140184135083776) is about to be unblocked
+TID: 140184135083776 is about to broadcast
+Reader's tid: 140184109905664 is now unblocked
+Thread: 44 (tid: 140184109905664) is about to be unblocked
+TID: 140184109905664 is about to broadcast
+Reader's tid: 140184118298368 is now unblocked
+Thread: 43 (tid: 140184118298368) is about to be unblocked
+TID: 140184118298368 is about to broadcast
+Reader's tid: 140184160261888 is now unblocked
+Thread: 38 (tid: 140184160261888) is about to be unblocked
+TID: 140184160261888 is about to broadcast
+Reader's tid: 140184126691072 is now unblocked
+Thread: 42 (tid: 140184126691072) is about to be unblocked
+TID: 140184126691072 is about to broadcast
+Reader's tid: 140184101512960 is now unblocked
+Thread: 45 (tid: 140184101512960) is about to be unblocked
+TID: 140184101512960 is about to broadcast
+Reader's tid: 140184093120256 is now unblocked
+Thread: 46 (tid: 140184093120256) is about to be unblocked
+TID: 140184093120256 is about to broadcast
+Reader's tid: 140184067942144 is now unblocked
+Thread: 49 (tid: 140184067942144) is about to be unblocked
+TID: 140184067942144 is about to broadcast
+Reader's tid: 140184084727552 is now unblocked
+Thread: 47 (tid: 140184084727552) is about to be unblocked
+TID: 140184084727552 is about to broadcast
+Reader's tid: 140184051156736 is now unblocked
+Thread: 51 (tid: 140184051156736) is about to be unblocked
+TID: 140184051156736 is about to broadcast
+Reader's tid: 140184042764032 is now unblocked
+Thread: 52 (tid: 140184042764032) is about to be unblocked
+TID: 140184042764032 is about to broadcast
+Reader's tid: 140184034371328 is now unblocked
+Thread: 53 (tid: 140184034371328) is about to be unblocked
+TID: 140184034371328 is about to broadcast
+Reader's tid: 140184025978624 is now unblocked
+Thread: 54 (tid: 140184025978624) is about to be unblocked
+TID: 140184025978624 is about to broadcast
+Reader's tid: 140184017585920 is now unblocked
+Thread: 55 (tid: 140184017585920) is about to be unblocked
+TID: 140184017585920 is about to broadcast
+Reader's tid: 140184076334848 is now unblocked
+Thread: 48 (tid: 140184076334848) is about to be unblocked
+TID: 140184076334848 is about to broadcast
+Reader's tid: 140184000800512 is now unblocked
+Thread: 57 (tid: 140184000800512) is about to be unblocked
+TID: 140184000800512 is about to broadcast
+Reader's tid: 140183958836992 is now unblocked
+Thread: 62 (tid: 140183958836992) is about to be unblocked
+TID: 140183958836992 is about to broadcast
+Reader's tid: 140183933658880 is now unblocked
+Thread: 65 (tid: 140183933658880) is about to be unblocked
+TID: 140183933658880 is about to broadcast
+Reader's tid: 140183984015104 is now unblocked
+Thread: 59 (tid: 140183984015104) is about to be unblocked
+TID: 140183984015104 is about to broadcast
+Reader's tid: 140183916873472 is now unblocked
+Thread: 67 (tid: 140183916873472) is about to be unblocked
+TID: 140183916873472 is about to broadcast
+Reader's tid: 140183874909952 is now unblocked
+Thread: 72 (tid: 140183874909952) is about to be unblocked
+TID: 140183874909952 is about to broadcast
+Reader's tid: 140183858124544 is now unblocked
+Thread: 74 (tid: 140183858124544) is about to be unblocked
+TID: 140183858124544 is about to broadcast
+Reader's tid: 140183883302656 is now unblocked
+Thread: 71 (tid: 140183883302656) is about to be unblocked
+TID: 140183883302656 is about to broadcast
+Reader's tid: 140183866517248 is now unblocked
+Thread: 73 (tid: 140183866517248) is about to be unblocked
+TID: 140183866517248 is about to broadcast
+Reader's tid: 140183841339136 is now unblocked
+Thread: 76 (tid: 140183841339136) is about to be unblocked
+TID: 140183841339136 is about to broadcast
+Reader's tid: 140183832946432 is now unblocked
+Thread: 77 (tid: 140183832946432) is about to be unblocked
+TID: 140183832946432 is about to broadcast
+Reader's tid: 140183816161024 is now unblocked
+Thread: 79 (tid: 140183816161024) is about to be unblocked
+TID: 140183816161024 is about to broadcast
+Reader's tid: 140183757412096 is now unblocked
+Thread: 86 (tid: 140183757412096) is about to be unblocked
+TID: 140183757412096 is about to broadcast
+Reader's tid: 140183908480768 is now unblocked
+Thread: 68 (tid: 140183908480768) is about to be unblocked
+TID: 140183908480768 is about to broadcast
+Reader's tid: 140183715448576 is now unblocked
+Thread: 91 (tid: 140183715448576) is about to be unblocked
+TID: 140183715448576 is about to broadcast
+Reader's tid: 140183690270464 is now unblocked
+Thread: 94 (tid: 140183690270464) is about to be unblocked
+TID: 140183690270464 is about to broadcast
+Reader's tid: 140183673485056 is now unblocked
+Thread: 96 (tid: 140183673485056) is about to be unblocked
+TID: 140183673485056 is about to broadcast
+Reader's tid: 140183707055872 is now unblocked
+Thread: 92 (tid: 140183707055872) is about to be unblocked
+TID: 140183707055872 is about to broadcast
+Reader's tid: 140184462403328 is now unblocked
+Thread: 2 (tid: 140184462403328) is about to be unblocked
+TID: 140184462403328 is about to broadcast
+Reader's tid: 140184454010624 is now unblocked
+Thread: 3 (tid: 140184454010624) is about to be unblocked
+TID: 140184454010624 is about to broadcast
+Reader's tid: 140184378472192 is now unblocked
+Thread: 12 (tid: 140184378472192) is about to be unblocked
+TID: 140184378472192 is about to broadcast
+Reader's tid: 140184344901376 is now unblocked
+Thread: 16 (tid: 140184344901376) is about to be unblocked
+TID: 140184344901376 is about to broadcast
+Reader's tid: 140184294545152 is now unblocked
+Thread: 22 (tid: 140184294545152) is about to be unblocked
+TID: 140184294545152 is about to broadcast
+Reader's tid: 140184361686784 is now unblocked
+Thread: 14 (tid: 140184361686784) is about to be unblocked
+TID: 140184361686784 is about to broadcast
+Reader's tid: 140184277759744 is now unblocked
+Thread: 24 (tid: 140184277759744) is about to be unblocked
+TID: 140184277759744 is about to broadcast
+Reader's tid: 140184319723264 is now unblocked
+Thread: 19 (tid: 140184319723264) is about to be unblocked
+TID: 140184319723264 is about to broadcast
+Reader's tid: 140184202225408 is now unblocked
+Thread: 33 (tid: 140184202225408) is about to be unblocked
+TID: 140184202225408 is about to broadcast
+Reader's tid: 140184151869184 is now unblocked
+Thread: 39 (tid: 140184151869184) is about to be unblocked
+TID: 140184151869184 is about to broadcast
+Reader's tid: 140183967229696 is now unblocked
+Thread: 61 (tid: 140183967229696) is about to be unblocked
+TID: 140183967229696 is about to broadcast
+Reader's tid: 140184009193216 is now unblocked
+Thread: 56 (tid: 140184009193216) is about to be unblocked
+TID: 140184009193216 is about to broadcast
+Reader's tid: 140183950444288 is now unblocked
+Thread: 63 (tid: 140183950444288) is about to be unblocked
+TID: 140183950444288 is about to broadcast
+Reader's tid: 140183765804800 is now unblocked
+Thread: 85 (tid: 140183765804800) is about to be unblocked
+TID: 140183765804800 is about to broadcast
+Reader's tid: 140183824553728 is now unblocked
+Thread: 78 (tid: 140183824553728) is about to be unblocked
+TID: 140183824553728 is about to broadcast
+Reader's tid: 140183681877760 is now unblocked
+Thread: 95 (tid: 140183681877760) is about to be unblocked
+TID: 140183681877760 is about to broadcast
+Reader's tid: 140183656699648 is now unblocked
+Thread: 98 (tid: 140183656699648) is about to be unblocked
+TID: 140183656699648 is about to broadcast
+Reader's tid: 140184403650304 is now unblocked
+Thread: 9 (tid: 140184403650304) is about to be unblocked
+TID: 140184403650304 is about to broadcast
+Reader's tid: 140184269367040 is now unblocked
+Thread: 25 (tid: 140184269367040) is about to be unblocked
+TID: 140184269367040 is about to broadcast
+Reader's tid: 140184193832704 is now unblocked
+Thread: 34 (tid: 140184193832704) is about to be unblocked
+TID: 140184193832704 is about to broadcast
+Reader's tid: 140183992407808 is now unblocked
+Thread: 58 (tid: 140183992407808) is about to be unblocked
+TID: 140183992407808 is about to broadcast
+Reader's tid: 140183925266176 is now unblocked
+Thread: 66 (tid: 140183925266176) is about to be unblocked
+TID: 140183925266176 is about to broadcast
+Reader's tid: 140183900088064 is now unblocked
+Thread: 69 (tid: 140183900088064) is about to be unblocked
+TID: 140183900088064 is about to broadcast
+Reader's tid: 140183749019392 is now unblocked
+Thread: 87 (tid: 140183749019392) is about to be unblocked
+TID: 140183749019392 is about to broadcast
+Reader's tid: 140183665092352 is now unblocked
+Thread: 97 (tid: 140183665092352) is about to be unblocked
+TID: 140183665092352 is about to broadcast
+Reader's tid: 140184412043008 is now unblocked
+Thread: 8 (tid: 140184412043008) is about to be unblocked
+TID: 140184412043008 is about to broadcast
+Reader's tid: 140184168654592 is now unblocked
+Thread: 37 (tid: 140184168654592) is about to be unblocked
+TID: 140184168654592 is about to broadcast
+Reader's tid: 140183942051584 is now unblocked
+Thread: 64 (tid: 140183942051584) is about to be unblocked
+TID: 140183942051584 is about to broadcast
+Reader's tid: 140183790982912 is now unblocked
+Thread: 82 (tid: 140183790982912) is about to be unblocked
+TID: 140183790982912 is about to broadcast
+Reader's tid: 140184428828416 is now unblocked
+Thread: 6 (tid: 140184428828416) is about to be unblocked
+TID: 140184428828416 is about to broadcast
+Reader's tid: 140184286152448 is now unblocked
+Thread: 23 (tid: 140184286152448) is about to be unblocked
+TID: 140184286152448 is about to broadcast
+Reader's tid: 140183849731840 is now unblocked
+Thread: 75 (tid: 140183849731840) is about to be unblocked
+Reader's tid: 140183782590208 is now unblocked
+Thread: 83 (tid: 140183782590208) is about to be unblocked
+Reader's tid: 140183799375616 is now unblocked
+Thread: 81 (tid: 140183799375616) is about to be unblocked
+Reader's tid: 140183732233984 is now unblocked
+Thread: 89 (tid: 140183732233984) is about to be unblocked
+Reader's tid: 140183648306944 is now unblocked
+Thread: 99 (tid: 140183648306944) is about to be unblocked
+Reader's tid: 140183774197504 is now unblocked
+Thread: 84 (tid: 140183774197504) is about to be unblocked
+Reader's tid: 140183740626688 is now unblocked
+Thread: 88 (tid: 140183740626688) is about to be unblocked
+Reader's tid: 140184386864896 is now unblocked
+Thread: 11 (tid: 140184386864896) is about to be unblocked
+Reader's tid: 140184235796224 is now unblocked
+Thread: 29 (tid: 140184235796224) is about to be unblocked
+Reader's tid: 140183698663168 is now unblocked
+Thread: 93 (tid: 140183698663168) is about to be unblocked

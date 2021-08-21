@@ -1,0 +1,3 @@
+1|EURUSD|Bank1|1.1|1.2
+2|EURUSD|Bank2|1.05|1.25
+3|EURUSD|Bank1|1.0|1.3

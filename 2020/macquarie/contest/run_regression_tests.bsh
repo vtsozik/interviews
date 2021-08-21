@@ -1,0 +1,32 @@
+#!/bin/bash
+
+for f in `ls *\.tc[^\.]`; do
+  ext=${f##*.}
+  e=`basename $f .$ext`
+  cat $f | ./$e > $f.out
+  diff -wB $f.out $f.a
+  if [ $? -eq 0 ]; then
+     echo "$f - Passed!"
+  else
+    echo "$f - Failed!"
+    break
+  fi
+  rm $f.out
+done
+
+for f in `ls *\.tcf[^\.]`; do
+  ext=${f##*.}
+  e=`basename $f .$ext`
+  export OUTPUT_PATH="./$f.out"
+  cat $f | ./$e
+  diff -wB $f.out $f.a
+  if [ $? -eq 0 ]; then
+    echo "$f - Passed!"
+  else
+    echo "$f - Failed!"
+    break
+  fi
+  unset OUTPUT_PATH
+  rm $f.out
+done
+

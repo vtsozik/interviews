@@ -1,0 +1,18 @@
+1) Q: Marathon runners are identified when passing through senser, print top 10 runners. 
+A: Hashtable with key as runner id and value is the latest sensor. Insert into hashtable 
+unconditionally until it reaches count 10. If element is present in hashtable already, 
+then just update its value. Allocate multimap that will track runner performance by 
+sensor id. Every time when pair is updated in hashtable, retrieve previous runner result
+and insert new one. After size of hashtable reaches 10 elements with every new pair of 
+data compare sensor id with a minimum from multimap if it's less or equal than minimum, 
+then discard this pair, if it's more, then look up runner id in the hash table and if 
+present update sensor id. Use old value to remove this pair from multimap and insert new 
+result. if runner is not present in hashtable then take the worst runner from multimap by
+looking up for the last value of runner id for the lowest sensor and remove this pair from
+both hashtable and multimap, insert new value into both data structures.
+
+2) Q: Implement Queue via stack
+   A: Use 2 stacks, as in hacking google interview questions
+
+3) Q: You have a matrix with cost assigned to each node. Calculate minimum path to target.
+   A: See geeksforgeeck.com

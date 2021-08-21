@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/vtsozik/work/interviews/2020/techolution/jniprime/com/com_techolution.cpp
+com_techolution.h
+/home/vtsozik/work/interviews/2020/techolution/jniprime/com/com_techolution.h
+math.h
+-
+
+/home/vtsozik/work/interviews/2020/techolution/jniprime/com/com_techolution.h
+jni.h
+-
+
+/usr/lib/jvm/java/include/jni.h
+stdio.h
+-
+stdarg.h
+-
+jni_md.h
+/usr/lib/jvm/java/include/jni_md.h
+
+/usr/lib/jvm/java/include/linux/jni_md.h
+

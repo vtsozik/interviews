@@ -1,0 +1,24 @@
+1) how linux heap detects memory freeze. Memory freeze is condition when chunk of memory was freed twice.
+2) implement multithreaded malloc/free.
+3) statically strongly typed language (C++) vs dynamically strongly typed language (python).
+4) how to implement a compile time polymorphism check (detec virtual Destructor).
+
+On-site interview people:
+Order, Name, Title, Function
+1) Alex Sheynin - VP, UNKNOWN
+2) Dan Boswell - N/A, IDE
+3) Ben Harrison - SVP, UNKNOWN
+2) Kuberan Naganathan - VP, DB dev team.
+
+Second-round:
+1) Q: Programmatically put process in nohup state.
+   A: Use signal(NOHUP, SIG_IGN) and then execvp. SIG_IGN basically tells process to ignore
+       any raised NOHUP signals.
+
+On-site interview people:
+Order, Name, Title, Function
+1) Garret
+2) Rajesh
+3) Michael Naunton
+
+

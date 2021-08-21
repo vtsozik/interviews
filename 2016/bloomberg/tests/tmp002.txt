@@ -1,0 +1,4 @@
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.2 from Bank1
+Best EURUSD Buy = 1.1 from Bank1
+Best EURUSD Sell = 1.15 from Bank2

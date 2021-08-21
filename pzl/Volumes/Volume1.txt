@@ -1,0 +1,87 @@
+Q1.1: Two kids in a family. One of them is daughter. What is probability that another child is daughter?
+
+A1.1: Let's employ Bayes theorem to answer this:
+P(at least 1 of 2 kids is D | both kids are D) * P(both kids are D) = P(both kids are D | at least 1 of 2 kids is D) * P(at least 1 of 2 kids is D), so 
+P(both kids are D | at least 1 of 2 kids is D) = P(at least 1 of 2 kids is D | both kids are D) * P(both kids are D) / P(at least 1 of 2 kids is D) = 1 * 1/4 / (3/4) = 1/3, where 
+Obviously: P(at least 1 of 2 kids is D | both kids are D) = 1 and 
+P(both kids are D) = P(first kid is D) * P(second kid is D) = 1/2 * 1/2 = 1/4 and
+P(at least 1 of 2 kids is D) = P(first or second born child is D) + P(both children are D) = 1/2 + 1/2 * 1/2 = 3/4
+
+Q1.2: Find x if x^x^x^x^...^x=2?
+
+A1.2: Let's rewrite this equation as x0^x1^x2^x3^...^xN=A, where 
+n->inf, x0=x1=x2=x3=...=xN=x and A=2. Since n->inf, x1^x2^x3^...^xN=A, so x0^A=A or x=x0=A^(1/A)=2^(1/2)
+
+Q1.3: Lighthouse is located L miles from shore line. Ray of light is turning with angular speed W.
+What is ray velocity V in direction parallel to the shore? Please see Figure1.
+
+A1.3: By definition V=dS/dt, from Figure1: dS=(L*sin(O+dO)/cos(O+dO))-(L*sin(O)/cos(O))=
+=L*(tan(O+dO)-tan(O))=L*dO*(tan(O+dO)-tan(O))/dO=L*dO*d(tan(O))/dO=L*dO/(cos(O)^2). On the other 
+hand: W=dO/dt, so V=dS/dt=L*dO/dt/(cos(O)^2)=L*W/(cos(O)^2). Since W=const, O=INT[,](W*dt)=W*t and
+V=L*W/(cos(O)^2)=L*W/(cos(W*t)^2).
+
+Q1.4: Bullet shot at O = 45 degrees to horizon with initial speed V0. At what destinance D from shooting point it will land?
+
+A1.4: Let's transform V0 to Vv - vertical and Vh - horizontal speeds: Vv=Vh=V0*cos(O). Time t1 that takes bullet to lose 
+vertical speed, can be found by solving the following equation Vv-g*t1=0, where g is G force, so t1=Vv/g Time t2 that will 
+take bullet to reach ground from height h in a free fall can be found by solving h=g*(t2^2)/2, so t2=(2*h/g)^.5. Height h
+can be found from energy conservation law. In vertical plane bullet will have kinetic energy Ek=m*(Vv^2)/2 where m - bullet 
+mass and potential energy Ep=m*g*h. In accordance to energy conservation law: Ek=Ep, so h=(Vv^2)/2/g. Then 
+t2=(2*(Vv^2)/2/g/g)^.5=Vv/g. Total time from shot moment to landing moment equal to t=t1+t2=2*Vv/g. Assuming no air 
+resistance D=Vh*t=V*cos(o)*2*V*cos(0)/g=2*((V*((2)^.5)/2)^2)/g=(V^2)2*2/4/g=(V^2)/g.
+
+Q1.5: Write an algorithm of square root computation. (Babylonian method.)
+
+A1.5: Babylonian method is derived from Newton-Raphson method. Let's first derive Newton-Raphson and then use it to derive 
+Babylonian method. Function derivative: df(x)/dx=(f(x+dx)-f(x))/dx, where dx->0. Let's define f'(x)=df(x)/dx, and expand 
+dx=(x+dx)-x. We're looking to find x+dx root of function, so function itself f(x+dx)=0. Rewriting derivative defition 
+formula we have ((x+dx)-x)*f'(x)=f(x+dx)-f(x). This can be further transformed into x+dx=x+(f(x+dx)-f(x))/f'(x)=
+=x+(0-f(x))/f'(x)=x-f(x)/f'(x). Now rewriting this as recurrence relation equation, where x+dx=X[i+1] and x=X[i] we have 
+X[i+1]=X[i]-f(X[i])/f'(X[i]). Finaly to derive Babylonian method we define simple equation x^2-c=0, which has x=sqrt(c) 
+solution that we're actually looking for. We now find numerical solution using Newton-Raphson method derived above:
+if f(X[i])=X[i]^2-C, (i.e. f(x)=x^2-c ) then f'(X[i])=2*X[i] (f'(x)=2*x) and X[i+1]=X[i]-(X[i]^2-C)/(2*X[i])=(X[i]+C/X[i])/2.
+
+Q1.6: Romeo and Juliet puzzle. Romeo and Juliet go on blind date. They didn't decide on exact time, but they agreed to meet
+at certain place from noon to 1P.M. Each will come and wait 15 minutes for the other party to appear. After that they will 
+leave if another party doesn't appear and date will be cancelled. What is actual probability of them to meet.
+
+A1.6: To solve this problem we need to find cumulative probability of Romeo and Juliet joint arrival within 15 minute 
+interval. To correctly solve this we actually need to split 1 hour interval into 2 sub-intervals: 1) from 0 to 3/4 and
+from 3/4 to 1. Oviously if Romeo or Juliet will come 46 minutes past noon or later (s)he will wait only 14 minutes (less
+than 15 minutes) for her (him) to come. Moreover if one of them comes at 1P.M. and doesn't see another this will mean 0
+probability to meet. Also since it doesn't matter who comes first or second sum of cumulative probabilities over the
+sub-intervals should be multiplied by 2. Therefore probability of Romeo and Juliet to meet will be equal to:
+P=2*(int[0,3/4](1/4)dx+int[3/4,1](1-x)dx)=2*(3/16+(1-1/2)-(3/4-9/32))=2*((6+16-15)/32)=7/16
+
+Q1.7: You have unsorted array of integers in a range from 500 to 600, one element of the array was accidentally assigned to 0. Devise an algorithm to find this element.
+
+A1.7: In one path compute sum of elements in the array then subtract it from sum of arithmetic progression computed for this 
+range as 101*(600+500)/2. The result will be the number that was accidentally assigned to 0.
+
+Q1.8: Devise an algorithm that expresses a positive integer as a sum of consecutive positive integers?
+
+A1.8: Defining positive integer that starts the summation sequence as x0 we can write the following equation:
+x0+(x0+1)+(x0+2)+(x0+3)+...=S or n*x0+(n-1)*n/2=S, so we need to find n that satisfies (S-(n-1)*n/2)%n=0
+Examples:
+1) S=18 => n=3, (18-(3-1)*3/2)%3=15%3=0, X0=15/3=5, 5+6+7=18
+2) S=20 => n=5, (20-(5-1)*5/2)%5=0, x0=10/5=2, 2+3+4+5+6=20
+3) S=19 => n=2, (19-(2-1)*2/2)%2=0, x0=18/2=9, 9+10=19
+4) S=2 => n->doesn't exist. *Please see note #2 below.
+Notes: 
+1) For any odd positive integer n is always equal to 2.
+2) Positive integers, that are equal to 2^i where 1<=i<=INFINITY and i is integer value, cannot be expressed as a sum
+of consecutive positive integers.
+
+Q1.9: n passengers are boarding airplane. First passenger can take any seat. Other passengers should take ticket assigned seat or take any other seat if their ticket assigned seat has been already taken. What is the probability that last passenger will be able to take her/his assigned seat?
+
+A1.9: If they are only 2 people boarding on a plane then probability of second passenger to take other than assigned seat is 1/2. If there are 3 passengers, then the probability of last passenger taking other than assigned seat is equal to 1/3*1/2+1/3=1/2. For 4 people it's 1/4*1/3*/1*2+1/4*1/3+1/4*1/2+1/4=1/2. Aggregating everything under common denominator gives: (1+2+3+2*3)/(2*3*4)=((1+3)+2*(1+3))/(2*3*4)=(1+2)*(1+3)/(2*3*4). For n passengers: (Mutliplication[from i=2 to i=n-1](i+1))/n!=(Mutliplication[from i=3 to i=n](i))/n!=n!/(Mutliplication[from i=1 to i=2](i))/n!=1/(Mutliplication[from i=1 to i=2](i))=1/(1*2)=1/2. Hence probability that last passenger will take ticket assigned seat is 1-(1/2)=1/2.
+
+Q1.10.1: Chef makes 9 pieces of sushi: 3 salmons, 3 tunas, 3 unagis. He randomly puts sushis on 3 plates, so each plate contains 3 pieces. Q10.1: What is probability that each plate will contain 1 salmon, 1 tuna and 1 unagi sushi? Q10.2: What is probability that each plate will contain the same type of shushis, e.g. 1st plate - 3 salmons, 2nd plate - 3 tunas, 3rd plate - 3 unagis?
+
+A1.10.2: At the beginning we have 9 pieces on a tray, so probability of selecting 1 salmon sushi is 3/9, then 1 tuna - 3/8 and then 1 unagi - 3/7. Also they are 3 choices for first selected sushi for first plate: salmon, tuna, unagi. 2 choices for second sushi for first plate: tuna, unagi. And we can select only unagi as a last choice for first plate after we've selected salmon and tuna. This gives the following expression for probability of having all 3 different type of sushi on each plate: 
+((3*3/9)*(2*3/8)*(1*3/7))*((3*2/6)*(2*2/5)*(1*2/4))*((3*1/3)*(2*1/2)*(1*1/1))=(((3!)^3)*(3!)*(3!)*(3!))/(9!)=
+=(((3!)^3)*((6!)*(3!))*((3!)*(3!)))/((9!)*(6!))=((3!)^3)/(C(9 by 3)*C(6 by 3)*C(3 by 3)).
+
+A10.2: At the beginning we have 9 pieces on a tray, so probability of selecting 1st salmon sushi is 3/9, then 2nd salmon - 2/8 and then 3rd salmon - 1/7. For first plate we have 3 choices: salmon, tuna, unagi. 2 choices for second plate: tuna and unagi. And we can only select unagi to be placed on third plate. This gives us the following expression for probability that each plate contains the same type of sushi: 
+(3*(3/9)*(2/8)*(1/7))*(2*(3/6)*(2/5)*(1/4))*(1*(3/3)*(2/2)*(1/1))=((3!)*(3!)*(3!)*(3!))/(9!)=
+=((3!)*((6!)*(3!))*((3!)*(3!)))/((9!)*(6!))=(3!)/(C(9 by 3)*C(6 by 3)*C(3 by 3)).

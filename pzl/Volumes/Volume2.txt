@@ -1,0 +1,193 @@
+Q2.1: You need to plant 3 oak and 5 birch trees in a line. You must plant at least one birch tree between 2 adjacent oak trees. How many such planting combinations are possible?
+
+A2.1: Lets first plant 5 birch trees. Then we will have 6 combinations to plant first oak: 4 between birch trees, 1 before 
+first birch tree and 1 after last birch tree. Then there will be 5 possible combinations to plant second oak tree and 4 
+combinations to plant last oak tree. Defining b as a number of birch trees and o as a number of oak trees. We can write
+that the total number of combinations to plant all oak trees is 6 * 5 * 4, generalizing this we get: 
+(b + 1) * b * (b - 1) * (b - 2) * ... * (b - o + 2). We can rewrite this as (b + 1)! / (b + 1 - o)!. Also to get get rid of 
+oak tree numbering we need to divide last statement by o!, but then (b + 1)! / (b + 1 - o)! / o! = C(b + 1, o). In our 
+particular case we can plant oak trees in C(5 + 1, 3) = C(6, 3) = 6! / (6 - 3)! / 3! = 20 possible combinations.
+
+Q2.2: Find expected value of function f(x)=x*exp(x), if x is normal random variable with mean m and standard deviation s?
+
+A2.2: Expected value of variable x or function f(x) is equal to: E[x]=E[f(x)]=E[x*exp(x)]=INT[-inf, inf](f(x)*p(x)*dx) (1), 
+where p(x)=1/(s*sqrt(2*PI))*exp(-1/2*((x-m)/s)^2) is normal PDF or normal probability density function. Expanding (1) for 
+f(x) and p(x) we have: E[x]=INT[-inf, inf](x*exp(x)/(s*sqrt(2*PI))*exp(-1/2*((x-m)/s)^2)*dx)=1/(s*sqrt(2*PI))*
+*INT[-inf, inf](exp((-1/2*((x-m)/s)^2)+x)*x*dx)=1/(s*sqrt(2*PI))*INT[-inf, inf](exp((-x^2+2*x*m-m^2+x*2*s^2)/(2*s^2))*x*dx)=
+=1/(s*sqrt(2*PI))*INT[-inf, inf](exp((-x^2+2*x*(m+s^2)-m^2)/(2*s^2))*x*dx)=
+=1/(s*sqrt(2*PI))*INT[-inf, inf](exp(-(x-m-s^2)^2+2*m*s^2+s^4)/(2*s^2))*x*dx)=
+=exp(m+(s^2/2)))/(s*sqrt(2*PI))*INT[-inf, inf](exp(-((x-m-s^2)/s)^2)/2))*x*dx). Now let's substitue (x-m-s^2)/s as t, then
+dt=dx/s or dx=s*dt; x=s*t+m+s^2. Finally: E[x]=exp(m+(s^2/2))/(s*sqrt(2*PI))*INT[-inf, inf](exp(-(t^2)/2))*(s*t+m+s^2)*dt)=
+=exp(m+(s^2/2))*(0+m+s^2)=(m+s^2)*exp(m+(s^2/2)). So E[x]=E[x*exp(x)]=(m+s^2)*exp(m+(s^2/2)).
+
+Q2.3: Rabbit can jump 1 or 2 steps at a time. In how many ways it can travel N steps?
+
+A2.3: This problem can be solved by means of backward induction. Indeed to get to Nth step rabbit needs to jump 1 step from
+(N-1)th step or it needs to jump 2 steps from (N-2)th step. These two paths are minimally unique and are part of all the 
+other paths from (N-2)th and (N-1)th steps to Nth step. Now if f(N) number of possible combinations to get to Nth step, 
+then f(N)=f(N-1)+f(N-2). This is fibonacci formula. Binet solution gives: f(N)=((1+sqrt(5))^N-(1-sqrt(5))^N)/(sqrt(5)*2^N).
+
+Q2.4: Frog needs to jump through 21 tiles. First it can land on 3rd or 7th tile and then on next 3 or 7 multiple. In how many 
+ways frog can reach 21st tile?
+
+A2.4:This problem can be solved by means of backward induction. Indeed to get to 21st tile frog has to jump either from 18th
+or from 15th or from 14th tile. Now if f(21) number of possible combinations to get to 21st tile, than
+f(21)=f(18)+f(15)+f(14), f(18)=f(15), f(15)=f(14)+f(12), f(14)=f(12)+f(9)+f(7)
+f(12)=f(9), f(9)=f(7)+f(6), f(7)=f(6)+f(3)+f(1), f(6)=f(3), f(3)=f(1), f(1)=1
+So if f(1)=1, then f(3)=1, f(6)=1, f(7)=1+1+1=3, f(9)=3+1=4, f(12)=4,
+f(14)=4+4+3=11, f(15)=11+4=15, f(18)=15, f(21)=15+15+11=41
+Alternatively eliminating first "one member" and then "multiples of 3" recurrence relations we have: 
+f(21)=2*f(15)+f(14), f(15)=f(14)+f(9), f(14)=2*f(9)+f(7), f(9)=f(7)+f(6), f(7)=2*f(3)+f(1). 
+Simplifying this further: f(21)=2*(f(14)+f(9))+f(14)=3*f(14)+2*f(9), 
+f(14)=2*(f(7)+f(6))+f(7)=3*f(7)+2*f(6), f(7)=3*f(1)=1, since f(6)=f(3)=f(1)=1.
+Substituting: f(9)=(f(14)-f(7))/2, f(6)=f(3)=(f(7)-f(1))/2 we have:
+f(21)=3*f(14)+2*(f(14)-f(7))/2=4*f(14)-f(7), f(14)=3*f(7)+2*(f(7)-f(1))/2=4*f(7)-f(1).
+This can be generalized as the following recurrence relation: f(m+7)=4*f(m)-1, where m is a multiple of 7. 
+If we make the following substitution n=m/7 so (m+7)/7=n+1 we can come up with simple recurrecrence relation: 
+f(n+1)=4*f(n)-1, that has the following characteristic equation: x^2=4*x-1 or x^2-4*x+1=0. Solving this
+for x we find two roots: x1=2+sqrt(3) and x2=2-sqrt(3). General close form solution to this problem may be presented as a sum 
+of particular solutions or roots: f(m/7)=f(n)=c1*(x1)^n+c2*(x2)^n, where c1 and c2 are coefficients. To find c1 and c2 let's 
+expand general or fundamental solution for cases where n=1 and n=2:
+c1*(2+sqrt(3))^1+c2*(2-sqrt(3))^1=3 and c1*(2+sqrt(3))^2+c2*(2-sqrt(3))^2=11. Solving this system of linear equations 
+for c1 and c2 we have:
+c1=(5+3*sqrt(3))/(2*(3+2*sqrt(3)))=(5+3*sqrt(3))*(3-2*sqrt(3))/(2*(3+2*sqrt(3))*(3-2*sqrt(3)))=1/(3-sqrt(3)),
+c2=(5-3*sqrt(3))/(2*(3-2*sqrt(3)))=(5-3*sqrt(3))*(3+2*sqrt(3))/(2*(3-2*sqrt(3))*(3+2*sqrt(3)))=1/(3+sqrt(3)). 
+And hence f(m/7)=f(n)=(2+sqrt(3))^n/(3-sqrt(3))+(2-sqrt(3))^n/(3+sqrt(3)). This can be easily checked by finding number of all possible paths that frog may follow to reach (m=21)st tile. Indeed n=m/7=21/7=3, So number of ways (paths) is equal to:
+f(3)=(2+sqrt(3))^3/(3-sqrt(3))+(2-sqrt(3))^3/(3+sqrt(3))=41.
+
+Q2.5: You have 10 coins, one of them is double headed. You randomly select 1 coin out of 10, toss and it falls head up. 
+What is the probability that this coin is double headed?
+
+A2.5: Bayes Theorem: P(DH|H) * P(H) = P(H|DH) * P(DH), where P(H) = 9/10 * 1/2 + 1/10 * 1 = 9/20 + 2/20 = 11/20, 
+probability that randomly selected coin shows head,
+P(H|DH) = 1, probability that double headed coin shows head,
+P(DH) = 1/10, probability that randomly selected coin is double headed,
+So the probability that coin that shows head is double headed:
+P(DH|H) = (P(H|DH) * P(DH)) / P(H) = (1 * 1/10) / (11/20) = (1/10) * (20/11) = 20/110 = 2/11
+
+Q2.6: Problem: You have the following infinite sequence: (1 + (1 + (1 + ...)^(1/2))^(1/2))^(1/2).
+What value this sequence (nested radical) converges to?
+
+A2.6: Defining x as (1 + (1 + ...)^(1/2))^(1/2)) we can write the following recurrence equation:
+x = (1+x)^(1/2) transforming this to (x^2) - x - 1 = 0 and solving against x gives us two roots:
+x1 = (1 + (1 - 4 * 1 * (-1))^(1/2)) / 2 = (1 + 5^(1/2)) / 2 and 
+x2 = (1 - (1 - 4 * 1 * (-1))^(1/2)) / 2 = (1 - 5^(1/2)) / 2
+Because of square root value cannot be negative we have to exclude x2 since 
+x = (1+x)^(1/2) should be positive in real domain.
+So the sequence will converge to value x = (1 + 5^(1/2)) / 2 = 1.618 or golden ratio.
+
+Q2.7: Let A1A2...A12 be a regular dodecagon with O as its center. Triangular regions OAiAi+1, 
+1<=i<=12 (and An+1 = A1) are to be colored red, blue, green or yellow such that adjacent 
+regions are in different colors. In how many ways can this be done?
+
+A2.7: Let's first simplify the problem by replacing dodecagon with square. If we have k colors,
+then we can color A1A2 in k ways, A2A3 can be colored in k-1 ways, since colors that we can use
+to paint A2A3 sould differ from the color that we use to paint adjacent A1A2. A2A3 also can be 
+painted in k-1 ways, since the colors that we can use should differ from the color that we used 
+to paint adjacent A1A2. Number of colors that we can use to paint A4A1 depends on whether A3A4
+and A1A2 are painted using the same color or 2 different colors. If A3A4 and A1A2 have the same
+color then A4A1 can be colored in k-1 ways, otherwise in k-2 ways so its color will differ from
+both A3A4 and A1A2 edges adjacent to A1A4. In case if A1A2 has the same color as A3A4 the number
+of colorings is equal to k*(k-1)*1*(k-1), when A1A2 and A3A4 have different colors, number of
+colorings is equal to k*(k-1)*(k-2)*(k-2). Note to avoid overlap with k*(k-1)*1*(k-1) case we 
+can only color A3A4 in k-2 ways since its color should differ from both adjacent A2A3 and not
+adjacent A1A2. Total number of coloring schemes for a square will be equal to a sum of two cases
+described above: P(4,k)=k*(k-1)*1*(k-1)+k*(k-1)*(k-2)*(k-2)=k*(k-1)*(k-1)+k*(k-1)*((k-1)-1)*(k-2)=
+=k*(k-1)*(k-1)+k*(k-1)*(k-1)*(k-2)-k*(k-1)*((k-1)-1)=k*(k-1)*(k-1)*(k-1)-k*(k-1)*(k-1)+k*(k-1)=
+=k*((k-1)^3)-(k*(k-1)*(k-1-1))=k*((k-1)^3)-k*(k-1)*(k-2). Notice that triangle edges can be 
+colored in k*(k-1)*(k-2) ways since A2A3 shouldn't be painted in the same color as A1A2 and color 
+of A3A1 should differ from both A1A2 and A2A3 which are 2 different colors since A1A2 is adjacent
+to A2A3. So we see a recursive relation P(4,k)=k*((k-1)^3)-P(3,k). Let's check if this recursive
+relation will be valid for pentagon. As in the case with square A5A1 can colored either in k-1 or 
+in k-2 ways. In case if A4A5 and A1A2 has the same color and A5A1 can be colored in k-1 ways there
+are k*(k-1)*(k-2)*1*(k-1) color schemes to paint all pentagon edges. Notice that A3A4 can only be
+colored in k-2 ways since its color should differ from adjacent A2A3 and not adjacent A1A2, otherwise
+we will not be able to paint A4A5 in the same color that we painted A1A2. It didn't matter for square
+case since A1A2 and A3A4 could have the same color as long as it was different from A2A3. In case
+when A4A5 and A1A2 have different colors and A5A1 can be colored in k-2 ways the number of coloring
+schemes will be equal to a sum of coloring schemes k*(k-1)*(k-2)*(k-2)*(k-2)+k*(k-1)*1*(k-1)*(k-2) 
+of two sub cases. In first sub case A3A4 should be colored in k-2 ways so its color will be different
+from adjacent A2A3 and not adjacent A1A2, to avoid overlap with second sub case where A3A4 should 
+be colored exactly as A1A2 to ensure that color of A4A5 will be different from A1A2 and hence narrow
+selection of colors for A5A1 to k-2. Total number of pentagon coloring schemes for all of the cases 
+is equal to P(5,k)=k*(k-1)*(k-2)*1*(k-1)+k*(k-1)*(k-2)*(k-2)*(k-2)+k*(k-1)*1*(k-1)*(k-2)=
+=k*((k-1)^4)-k*((k-1)^3)+k*(k-1)*(k-2)=k*((k-1)^4)-P(4,k). So we verified previously conjectured 
+recurrence relation for pentagon case. Let's now find a solution for general recurrence relation
+equation P(n,k)=k*((k-1)^(n-1))-P(n-1,k). Expanding recurrence relation we have: 
+P(n,k)=k*((k-1)^(n-1))-k*((k-1)^(n-2))+k*((k-1)^(n-3))+...+((-1)^(n-4))*k*((k-1)^3)+
++((-1)^(n-3))*k*(k-1)*(k-2). If we multiply and devide all members except the last one:
+((-1)^(n-3))*k*(k-1)*(k-2) by 1+(k-1) we transform this sign alternating series into P(n,k)=
+=k*((k-1)^n+((-1)^(n-4))*((k-1)^3))/(1+(k-1))+((-1)^(n-3))*k*(k-1)*(k-2)=(k-1)^n+
++((-1)^(n-4))*(k-1)*((k-1)^2-k*(k-2))=(k-1)^n+((-1)^(n-4))*(k-1)*((-1)^4)/((-1)^4)=
+=(k-1)^n+((-1)^n)*(k-1). Finally we can have P(12,4)=(4-1)^12+((-1)^12)*(4-1)=531,444 4-colored
+dodecagon schemes.
+
+Q2.8: A square of dimensions (n-1)*(n-1) is divided into (n-1)^2 unit squares in the usual manner.
+Each of the n^2 vertices of these is to be colored red or blue. Find the number of different
+colorings such that each unit square has exactly two red vertices. (Two coloring schemes are 
+regarded as different if at least one vertex is colored differently in the two schemes.)
+
+A2.8: Let's consider a trivial case when there's only one unit square. Then we have 4 vertices
+to paint. If we use the same color to paint 2 vertices in the bottom row, then we will have 2
+legal coloring schemes. If the vertices in the bottom row have different color then there
+will be 2*2=4 coloring schemes where 2 vertices are red for each unit square since we will be
+also able to color upper row in 2 different ways, whereas there's only 1 way to color upper 
+row if both vertices of the bottom row are painted with the same color. So the total number of 
+legal coloring schemes is equal to 2+4=6 for 4 vertices. Let's now calculate number of legal 
+coloring schemes for 4 unit squares or 9 vertices. If all vertices in the bottom row have the 
+same color then we can color vertices in only 2 different ways to have 2 red painted vertices 
+for each unit square. We can also select 2 adjacent vertices in 2 different ways and paint them 
+with either 1 of 2 different colors. This gives us 2*2=4 legal coloring schemes in addition.
+Finally if all bottom row vertices are painted alternating red and blue color, so no 2 adjacent
+vertices are painted with the same color then we can have 2 ways of painting each row just by
+flipping the colors. This gives us 2*2*2=8 additional legal coloring schemes. In total we will
+have 2+2^2+2^3=14 legal coloring schemes. In general number of legal coloring schemes can be
+calculated as S(n)=2^1+2^2+2^3+...+2^n=2*(1+2^1+2^2+...+2^(n-1))=2*(1-2^n)/(1-2)=2^(n+1)-2.
+
+Q2.9: Car has 2 headlights. Each headlight bulb burns out after m=2500 hours of work at average
+and its life expectancy is exponentially distributed. So m=int[0,inf](t*l*exp(-l*t)*dt)=
+=-t*exp(-l*t)[0,inf]+int[0,inf](exp(-l*t)*dt)=(-1/l*exp(-l*t))[0,inf]=1/l. How long it will take 
+on average for both bulbs to burn out?
+
+A2.9.1: We need to find average time until last bulb burns out, i.e. 
+m2=int[0,inf](int[0,inf](max(t1,t2)*l*exp(-l*t1)*dt1)*l*exp(-l*t2)*dt2), where max(t1,t2) can
+be expressed via Heavyside function: h(t<0)=0 and h(t>=0)=1, as theta function: o(t1,t2)=
+=max(t1,t2)=t1*(1-h(t2-t1))+t2*h(t2-t1). So 
+m2=(l^2)*int[0,inf](int[0,inf]((t1-t1*h(t2-t1)+t2*h(t2-t1))*exp(-l*(t1+t2))*dt1)*dt2)=
+=(l^2)*int[0,inf](int[0,inf](t1*exp(-l*(t1+t2))*dt1)*dt2)-
+-(l^2)*int[0,inf](int[0,t2](t1*exp(-l*(t1+t2))*dt1)*dt2)+
++(l^2)*int[0,inf](int[0,t2](t2*exp(-l*(t1+t2))*dt1)*dt2)=1/l-1/(4*l)+3/(4*l)=(4-1+3)/(4*l)=3/(2*l)
+Since m=1/l and l=1/m, m2=3/(2*l)=3*m/2=3*2500/2=3750. 
+
+A2.9.2: Cummulative probability that bulb will burn out by time T is equal to 
+p1=int[0,T](l*exp(-l*t)*dt)=1-exp(-l*t). Cummulative probability that bulbs both will burn out
+by time T is equal to p2=(int[0,T](l*exp(-l*t)*dt))^2=(1-exp(-l*t))^2. Probability density for
+p2 is equal to dp2(t)/dt=-2*(1-exp(-l*t))*l*exp(-l*t). Average time can be calculated using this 
+probability density as m2=2*l*int[0,inf](t*(exp(-2*l*t)-exp(-l*t))*dt=2/l-1/(2*l)=3/(2*l)=3*m/2
+
+A2.9.3: Let's find average time between first and second bulb burn out: 
+m12=int[0,inf](t1*exp(-l*t1)*(1-int[0,t1](exp(-l*t2)*dt2))*dt1)+
++int[0,inf](t2*exp(-l*t2)*(1-int[0,t2](exp(-l*t1)*dt1))*dt2)=1/(4*l)+1/(4*l)=1/(2*l)=m/2.
+Now since the bulb that burned out first should have worked m hours at average and exponential
+distribution is memoryless (i.e. there's no bulb aging and P(t+s|t)=P(s), P(t+s)|t) where probability,
+that bulb will work for s hours provided that at time t it was working and P(s) just a probability 
+that bulb will work s hours) total life exectancy for a system of 2 bulbs is equal to m2=m+m/2=3*m/2.
+
+A2.9.4: To summarize: for a system of n bulbs (each bulb has life exectancy of m hours) total system
+life expectancy will equal to m(n)=sum[i=1,n](1/i).
+
+Q2.10: Find sum of the following series: 1/(1*2)+1/(2*3)+1/(3*4)+...
+
+A2.10.1: We can rewrite this series sum as 1/(1*2)+1/(2*3)+1/(3*4)+...=sum[i=2,inf](1/((i-1)*i)), then
+sum[i=2,inf](1/((i-1)*i))=sum[i=2,inf]((i-(i-1))/((i-1)*i))=sum[i=2,inf](1/(i-1))-sum[i=2,inf](1/i)=
+=sum[i=1,inf](1/i)-sum[i=2,inf](1/i)=1+sum[i=2,inf](1/i)-sum[i=2,inf](1/i)=1.
+
+A2.10.2: Sum of geometric series is equal to 1 + x + X^2 + x^3 + ... = (1 - x^n)/(1 - x). Now if x < 1 
+and n->infinity, then (1-x^n)/(1-x)->1/(1-x). Integrating both sides we have x / 1 + x^2 / 2 + x^3/3 + 
++ ... = integral(dx/(1-x)) = -integral(d(1-x)/(1-x)) = -ln(1-x). Then we integrate last expression again,
+using integration by parts: x^2/(1*2) + x^3/(2*3) + x^4/(3*4) + ... = integral(-ln(1-x)*dx) = 
+= -integral(u*dv) = -u*v + integral(v*du) = -ln(1-x)*x + integral(-x/(1-x)*dx) = -ln(1-x)*x + 
++ integral((1-x-1)/(1-x)*dx) = -ln(1-x)*x + x - integral(1/(1-x)*dx) = x - ln(1-x)*x + ln(1-x) =
+= x + (1-x)*ln(1-x), where dv=dx, v=x, u=ln(1-x), du=d(ln(1-x))=-dx/(1-x). Now if we set x->1 we will get
+1/(1*2) + 1/(2*3) + 1/(3*4) + ... = 1 + (1-1)*ln(1-1) = 1. This is because ln(1-x) increases at much
+slower rate than (1-x) decreases as x approaches 1.

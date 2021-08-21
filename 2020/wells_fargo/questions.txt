@@ -1,0 +1,43 @@
+1) Question: Rvalues references, std::move, move constructors, assignment operators in C++ 11. What it is? How it is used? Why we need that? Write a code for a data holder object that demonstrates use of these concepts.
+
+ Answer: Please refer to the attached code sample: moveconstructedstring.cpp . Read up: https://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html
+for further explanation.
+
+2) Question: Compute value of n-th Fibonacci sequence member in compile time.
+
+Answer: Please refer to the attached code sample: Please refer to the attached code sample: fibonacciviacrtp.cpp . The example based on Curiously Recursive Template Pattern (CRTP) described in “Modern C++ Design” by Andrei Alexandrecu.
+
+3) Question: Can inline function be also virtual?
+
+Answer: No, latest compilers will simply ignore inlining as address of the function is inserted into virtual table and hence function cannot be simply inlined and its code extracted from the function body and pasted into its callers.
+
+4)  Question: Can you define static variable inside inline function?
+
+Answer: No. This code will not compiled as during the inlining static variable will be injected along with inline function code into bodies of its callers and compiler will error out with “multiple definitions” error.
+
+5) Question: Can you define template function virtual?
+
+Answer: No, please refer to attached virtualinsidetemplate.cpp code sample. While you can have virtual functions inside template class and even make them to refer to class template arguments you cannot define virtual template function. The reason is because templates parameters become part of function signature during compilation and make it different from virtual override, so it will be impossible to build virtual table at run time.
+
+6) Question: Can you hide virtual function from derived class without changing base class?
+
+Answer: Yes. Please refer to attached hidevirtualfunction.cpp sample code. Base struct car has virtual fillup function. This function doesn’t make sense as tesla struct override. But we can slot eleccar struct between car and tesla structs forming new inheritance hierarchy that allows to override drive function and hides fillup function from tesla as it’s not declared in eleccar  and adds virtual charge function instead to be overriden in teslsa struct.
+
+7) Question: What is Double dispatch?
+
+Answer: Please refer to doubledispatch.cpp code sample. Double dispatch is a paradigm that adds another dimension to polymorphic calls. In the example attached function virtual function fly is defined 4 times, 2 – inside airplane (base), overloaded for pilots and passengers and 2 – overridden inside businessjet (derived).
+
+8) Question: What is better: throwing exception by value or by pointer?
+
+Answer: It is always better to throw by value as you don’t have to deal with deallocation issues, especially when pointer scope is quarded by a wrapped smart pointer, but raw pointer is thrown.
+
+9) Question: What is present value PV of non-callable bond with coupon C and discount interest rate I, term N and principal P:
+
+Answer: PV = C / (1 + I) + C / (1 + I)^2 + … + C / (1 + I)^N + P / (1 + I)^N = C * ((1 – (1 + I) ^ -N) / I) + P * (1 + I)^-N
+
+10) Question: What market data you need to have to price vanilla stock option?
+Answer: Underlying stock price, dividends, volatility, market interest rate, time to option expiration.
+
+11) Question: Compare gamma for at call option stroked at $26 and stroked at $30 with intrinsic stock price $26?
+
+Answer: Gamma is a second derivative of option price by underlying. Gamma is the highest for at the money options and decreases for options deeper in/out of the money. Hence option with a strike at $26 will have a higher gamma than option with strike at $30 provided that stock trades at $26.

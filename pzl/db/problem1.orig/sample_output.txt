@@ -1,0 +1,3 @@
+route 1: cycle between stops 2 and 3
+route 2: cycle between stops 3 and 9
+route 3: no cycling

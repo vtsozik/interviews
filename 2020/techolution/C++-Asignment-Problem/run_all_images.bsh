@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for f in `find images/ -type f -name '*.jpg' -and -not -name '*_out.jpg'`; do
+   ./build/AgeGender $f
+done

@@ -1,0 +1,12 @@
+Q: Rabbit sits on a stair. It can jump 1 step up with probability 0.5 or 1 step down with probability 0.5. 
+What is the probability that rabbit will end up on the same step where he started jumping from after n jumps?
+A: We can transform this problem into a game where we toss a fair coin if it falls head up, then we win $1 and
+we loose $1 if it falls tail up. Since the coin is fair head and tail probabilities are both equal to 0.5. Since 
+we can store an outcome of each coin toss into binary variable holding -1 for tail and +1 for head there can be
+2^n coin tossing sequence combinations (i.e. this is our event space, e.g THTHTHTH represents one tossing  coin
+sequence). To end up with 0 loss/win (starting step analogy) number of heads should be equal to number of tails.
+This implies that n - must be even, indeed if it was odd then there's no way to return to starting position.
+Since it doesn't matter how heads and tails are ordered in tossing sequence there can be 
+C(n,n/2)=n!/(n-n/2)!/(n/2)! sequence combinations where the number of heads is equal to number of tails. So the
+probability of 0 win/loss or ending up in a starting position after n coin tosses or rabbit jumps is equal to 
+P(0,n)=C(n,n/2)/(2^n)=n!/(n-n/2)!/(n/2)!/(2^n)

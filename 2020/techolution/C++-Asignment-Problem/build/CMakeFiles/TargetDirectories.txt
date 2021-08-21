@@ -1,0 +1,3 @@
+/home/vtsozik/work/interviews/2020/techolution/C++-Asignment-Problem/build/CMakeFiles/rebuild_cache.dir
+/home/vtsozik/work/interviews/2020/techolution/C++-Asignment-Problem/build/CMakeFiles/AgeGender.dir
+/home/vtsozik/work/interviews/2020/techolution/C++-Asignment-Problem/build/CMakeFiles/edit_cache.dir

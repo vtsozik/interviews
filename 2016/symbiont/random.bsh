@@ -1,0 +1,40 @@
+#/bin/bash
+#set -x
+
+chunk=$((512/8*2))
+seed=""
+pool=""
+
+if [ $# -gt 2 ] || [ "$1" == "-h" ] || ( [ "$1" == "-s" ] && [ -z "$2" ] ); then
+	echo "Usage: $0 [-h|-s <seed>]"
+        exit 1
+else
+ seed=$2
+fi
+
+if [ -z $seed ]; then
+ seed=`ps -elfww --sort c | sha512sum`
+ seed=${seed:0:$chunk}
+fi
+
+while [ ${#seed} -lt $chunk ] ; do 
+ pad=`ifconfig | sha512sum`
+ seed=$seed${pad:0:$chunk}
+done
+
+while true; do
+ pool=`iostat -x``ifconfig``ps -elfww --sort c`
+ en=$(( ${#pool} - $chunk ))
+ st=0
+ buff=$seed
+ while [ $st -lt $en ]; do
+  buff=$buff${pool:$st:$chunk}
+  buff=`echo -n $buff | sha512sum`
+  buff=${buff:0:$chunk}
+  st=$((st+chunk))  
+  echo $buff | xxd -r -p
+ done
+ newseed=`echo -n $pool | sha512sum`
+ seed=`echo -n $newseed$seed | sha512sum`
+ seed=${seed:0:$chunk}
+done

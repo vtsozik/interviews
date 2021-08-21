@@ -1,0 +1,67 @@
+Q1: There are m buckets and n balls how many ball/bucket allocation combinations are possible.
+
+A1.1: Suppose m = 3, n = 4. We drop first ball, they are 3 buckets and hence 3 possibilities. Second
+drop will produce 4 different allocations, 2 will result from placing ball into each of the 
+two empty buckets, 1 from placing ball AFTER first dropped ball into bucket occupied by first 
+dropped ball, 1 from placing ball BEFORE first dropped ball into bucket occupied by first
+dropped ball. Third drop will result 5 possible allocations 1 + 2 + 2 = 5. Last, fourth drop
+will create 6 possible allocations. Total numer of allocations will be equal then to 
+3 * 4 * 5 * 6. Notice that (m + n - 1) = 3 + 4 - 1 = 6. Generalizing this we have
+m * (m + 1) * (m + 2) * ... * (m + n - 1), or (m + n - 1)! / (m - 1)!. This derived under 
+assumptions that balls are numbered and two allocations wth the same quantity of balls placed 
+into the same buckets are different if balls are placed in different order. To remove ordering
+we have to devide number of allocations derived above by number of possible order sequences.
+First ball placed into sequence may have only one possible position in a sequence, second - two
+(before and after first placed ball), third - 3 and fourth - 4. Total number of possible
+sequence positions will be equal to 1 * 2 * 3 * 4 = 4! or n! in general case. Finally number
+of possible ball/bucket allocations will be equal to (m + n - 1)! / (m - 1)! / n! =
+= (n + m - 1)! / ((n + (m - 1)) - (m - 1))! / (m - 1)! = C((n + m - 1), (m - 1)). 
+
+A1.2: Suppose you have one big bin where you can insert partitions effectively
+dividing it on several smaller bins (see figure below). 
+
+| o o o o | => | o | o  o | o |
+|---------| => |--------------|
+
+Suppose we have 4 balls and 2 partitions that we can insert and create upto 
+3 separate bins. We can insert first partition in 5 different ways. 3 slots 
+are located between balls and 2 between each wall and adjacent to it ball. 
+Second partition can be inserted in 6 possible ways. Additional way to insert
+it comes from the fact that second partition can be placed before or after
+first one. So we have 5 * 6 = (n + 1) * (n + 2) = (n + 1) * (n + (m - 1)) = 
+= (n + (m - 1))! / n!, where (m - 1) is a number of partitions and hence m is
+number of bins. But this only holds if partitions are numbered and its
+sequence order matters. To get rid of ordering we need to divide the previous
+result by a number of possible ways that partition sequence can be ordered.
+First of two partitions can be selected in possible ways and we have only one
+way to select second and also last partition in this case. So in total we have
+2 * 1 = (m - 1)! number of ways to order partition sequence. This means that
+they are (n + (m - 1))! / n! / (m - 1)! = (n + (m - 1))! / 
+ / ((n + (m - 1)) - (m - 1))! / (m - 1)! = C((n + (m - 1)), (m - 1))
+combinations to distribute n balls between m bins.
+
+Q2: There are n balls and m bins. How many ball/bin allocation combinations are
+possible to make each bin contain at least one ball at the end?
+
+A2.1: As in A1.2 let's suppose you have one big bin where you can insert partitions 
+effectively dividing it on several smaller bins (see figure below).
+
+| o o o o | => | o | o  o | o |
+|---------| => |--------------|
+
+Suppose we have 4 balls and 2 partitions that we can insert and create upto
+3 separate bins. We only can insert first partition in 3 different ways. We
+cannot insert this partition between wall and ball since it will create an
+empty bucket and we need every bucket to contain at least one ball. Hence the
+last partition can be installed in only 2 different ways. So in total we will
+have (n - 1) * (n - 2) combinations, where n is number of balls. We can also
+transform this formula into (n - 1)! / (n - m)!, where m is number of bins and
+(m - 1) is number of partitions. To drop partition ordering we also need to
+divide above expression by number of possible partition order sequences which
+is equal to (m - 1)!. Indeed if we number each partition then inserting first
+partition before the second and vice versa inserting second partition before
+the first will be counted as 2 different and distinct possibilities for
+inserting our 2 partitions. As a last step we can further transform resulted
+expression to simplify it: (n - 1)! / (n - m)! / (m - 1)! = 
+(n - 1)! / ((n - 1) - (m - 1))! / (m - 1)! = C((n - 1), (m - 1)).
+
