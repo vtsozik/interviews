@@ -1,0 +1,20 @@
+#!/bin/bash
+
+bnr=$1
+if [ -z "$bnr" ] || [ ! -e ./$bnr ]; then
+ echo "Usage: ./"`basename $0`" <test_binary>"
+ exit 2
+fi
+mkdir -p out
+for tc in `ls in/tc[0-9]*.txt`; do
+ ftc=`basename $tc`
+ cat $tc | tail -1 > out/oo$ftc
+ cat $tc | ./$bnr 2>&1 | tail -1 > out/o$ftc
+ diff out/oo$ftc out/o$ftc
+ if [ "$?" != "0" ]; then
+  echo "$tc - FAILED! PLEASE SEE DIFFS ABOVE."
+  exit 1
+ else
+  echo "$tc - PASSED!"
+ fi
+done

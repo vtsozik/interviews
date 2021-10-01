@@ -1,0 +1,54 @@
+Hi,
+
+I came up with solution below for the following problem: 
+https://www.hackerrank.com/challenges/magic-square-forming/problem
+
+// Complete the formingMagicSquare function below.
+int formingMagicSquare(vector<vector<int>> s) {
+    vector<int> f;
+    for(size_t i(0); i < s.size(); ++i)
+    {
+        for(size_t j(0); j < s[i].size(); ++j)
+        {
+            f.push_back(s[i][j]); 
+        }
+    }
+    sort(f.begin(), f.end());
+    int cost(0);
+    for(int i(0); i < f.size(); ++i)
+    {
+        assert(0 < f[i] && f[i] <= f.size());
+        cost += abs(f[i] - (i + 1));
+    }
+    return cost;
+}
+
+Code flattens 3x3 matrix into single dimension array of 9
+elements, then calculates total costs of fixing the magic
+square by adding absolute value of difference between array 
+element and its zero based index + 1. Solution work for several 
+test cases, but fails for the following matrix:
+
+4 5 8
+2 4 1
+1 9 7
+
+Where cost is exected to be 14. I see cost at only 4 as if you
+subtract sorted array from 1 based indices of its elements
+
+1 2 3 4 5 6 7 8 9
+-
+1 1 2 4 4 5 7 8 9
+=
+0+1+1+0+1+1+0+0+0 = 4
+
+I appreciate if you could correct this other 18 incorrect test
+cases or point out at flaw in the algorithm above.
+
+Thank you in advance for your help,
+ Vadim.
+
+
+
+
+
